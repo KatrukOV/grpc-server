@@ -1,6 +1,6 @@
 package com.katruk.grpc.service;
 
-import com.katruk.grpc.api.pb.Server;
+import com.katruk.grpc.api.pb.Hello;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class HelloService {
 
-    public Server.HelloResponse say(Server.HelloRequest request) {
+    public Hello.HelloResponse say(Hello.HelloRequest request) {
         String name = request.getName();
-        return Server.HelloResponse.newBuilder()
+        return Hello.HelloResponse.newBuilder()
                 .setGreeting(String.format("Hello, %s !!!", name))
                 .build();
     }
