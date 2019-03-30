@@ -14,6 +14,8 @@ import java.time.LocalDateTime;
 
 import static io.grpc.Status.CANCELLED;
 import static java.time.LocalDateTime.now;
+import static java.util.Optional.ofNullable;
+import static java.util.concurrent.CompletableFuture.supplyAsync;
 
 @Slf4j
 @Component
@@ -23,24 +25,42 @@ public class HelloRpc extends HelloApiGrpc.HelloApiImplBase {
     private final HelloService helloService;
 
     @Override
-    public void say(Hello.HelloRequest request, StreamObserver<Hello.HelloResponse> response) {
+    public void trySay(Hello.HelloRequest request, StreamObserver<Hello.HelloResponse> response) {
         LocalDateTime start = now();
         try {
             Hello.HelloResponse result = this.helloService.say(request);
-            if (Context.current().isCancelled()) {
-                response.onError(CANCELLED
-                        .withDescription("Call CANCELLED")
-                        .asRuntimeException()
-                );
-                log.warn("Call cancelled by client!");
-            } else {
-                response.onNext(result);
-                response.onCompleted();
-                log.info("Res = {}. TimeOF: {}", result.getGreeting(), Duration.between(start, now()));
-            }
+            success(response, start, result);
         } catch (Exception ex) {
             response.onError(ex);
             log.error("Error {}", ex.getMessage());
+        }
+    }
+
+    @Override
+    public void cfSay(Hello.HelloRequest request, StreamObserver<Hello.HelloResponse> response) {
+        LocalDateTime start = now();
+        supplyAsync(() -> this.helloService.say(request))
+                .whenComplete((result, ex) -> {
+                    if (ofNullable(ex).isPresent()) {
+                        response.onError(ex);
+                        log.error("Error {}", ex.getMessage());
+                    } else {
+                        success(response, start, result);
+                    }
+                });
+    }
+
+    private void success(StreamObserver<Hello.HelloResponse> response, LocalDateTime start, Hello.HelloResponse result) {
+        if (Context.current().isCancelled()) {
+            response.onError(CANCELLED
+                    .withDescription("Call CANCELLED")
+                    .asRuntimeException()
+            );
+            log.warn("Call cancelled by client!");
+        } else {
+            response.onNext(result);
+            response.onCompleted();
+            log.info("Res = {}. TimeOF: {}", result.getGreeting(), Duration.between(start, now()));
         }
     }
 

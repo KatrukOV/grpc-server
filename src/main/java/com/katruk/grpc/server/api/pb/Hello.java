@@ -21,9 +21,11 @@ public final class Hello {
         java.lang.String[] descriptorData = {
                 "\n\013hello.proto\022\005hello\"\034\n\014HelloRequest\022\014\n\004" +
                         "name\030\001 \001(\t\"!\n\rHelloResponse\022\020\n\010greeting\030" +
-                        "\001 \001(\t2<\n\010HelloApi\0220\n\003say\022\023.hello.HelloRe" +
-                        "quest\032\024.hello.HelloResponseB(\n\035com.katru" +
-                        "k.grpc.server.api.pbB\005HelloP\000b\006proto3"
+                        "\001 \001(\t2s\n\010HelloApi\0223\n\006trySay\022\023.hello.Hell" +
+                        "oRequest\032\024.hello.HelloResponse\0222\n\005cfSay\022" +
+                        "\023.hello.HelloRequest\032\024.hello.HelloRespon" +
+                        "seB(\n\035com.katruk.grpc.server.api.pbB\005Hel" +
+                        "loP\000b\006proto3"
         };
         com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
                 new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -68,7 +70,6 @@ public final class Hello {
     getDescriptor() {
         return descriptor;
     }
-
     public interface HelloRequestOrBuilder extends
             // @@protoc_insertion_point(interface_extends:hello.HelloRequest)
             com.google.protobuf.MessageOrBuilder {
@@ -133,7 +134,6 @@ public final class Hello {
         private HelloRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
             super(builder);
         }
-
         private HelloRequest() {
             name_ = "";
         }
@@ -680,7 +680,6 @@ public final class Hello {
         private HelloResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
             super(builder);
         }
-
         private HelloResponse() {
             greeting_ = "";
         }
