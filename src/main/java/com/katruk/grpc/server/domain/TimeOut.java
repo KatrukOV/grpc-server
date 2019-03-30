@@ -1,23 +1,19 @@
 package com.katruk.grpc.server.domain;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 public final class TimeOut {
 
-    private TimeOut() {
+    private final long milliSecond;
+
+    public TimeOut(long mSecond) {
+        this.milliSecond = mSecond;
     }
 
-    public static void waiting(final long miliSecond) {
+    public void waiting() {
         try {
-            Thread.sleep(miliSecond);
+            Thread.sleep(milliSecond);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
-
-    public static void waiting(final int min, final int max) {
-        int randomNum = ThreadLocalRandom.current().nextInt(min, max + 1);
-        waiting(randomNum);
     }
 
 }
