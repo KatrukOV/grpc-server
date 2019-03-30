@@ -12,7 +12,7 @@ public class HelloService {
 
     public Hello.HelloResponse say(Hello.HelloRequest request) {
         String name = request.getName();
-        waiting(3);
+        waiting(5, 1700);
         return Hello.HelloResponse.newBuilder()
                 .setGreeting(String.format("Hello, %s !!!", name))
                 .build();
