@@ -3,7 +3,7 @@ syntax = "proto3";
 package hello;
 
 option java_multiple_files = false;
-option java_package = "com.katruk.grpc.api.pb";
+option java_package = "com.katruk.grpc.server.api.pb";
 option java_outer_classname = "Hello";
 
 service HelloApi {
