@@ -1,6 +1,6 @@
-package com.katruk.grpc;
+package com.katruk.grpc.server;
 
-import com.katruk.grpc.api.HelloRpc;
+import com.katruk.grpc.server.api.HelloRpc;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import org.springframework.stereotype.Component;

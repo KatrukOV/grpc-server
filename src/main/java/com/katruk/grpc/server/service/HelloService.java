@@ -1,11 +1,10 @@
-package com.katruk.grpc.service;
+package com.katruk.grpc.server.service;
 
-import com.katruk.grpc.api.pb.Hello;
-import com.katruk.grpc.domain.TimeOut;
+import com.katruk.grpc.server.api.pb.Hello;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import static com.katruk.grpc.domain.TimeOut.waiting;
+import static com.katruk.grpc.server.domain.TimeOut.waiting;
 
 @Service
 @RequiredArgsConstructor

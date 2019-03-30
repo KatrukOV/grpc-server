@@ -1,4 +1,4 @@
-package com.katruk.grpc.domain;
+package com.katruk.grpc.server.domain;
 
 public final class TimeOut {
 

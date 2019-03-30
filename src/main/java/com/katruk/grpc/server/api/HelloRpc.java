@@ -1,8 +1,8 @@
-package com.katruk.grpc.api;
+package com.katruk.grpc.server.api;
 
-import com.katruk.grpc.api.pb.Hello;
-import com.katruk.grpc.api.pb.HelloApiGrpc;
-import com.katruk.grpc.service.HelloService;
+import com.katruk.grpc.server.api.pb.Hello;
+import com.katruk.grpc.server.api.pb.HelloApiGrpc;
+import com.katruk.grpc.server.service.HelloService;
 import io.grpc.Context;
 import io.grpc.stub.StreamObserver;
 import lombok.RequiredArgsConstructor;
