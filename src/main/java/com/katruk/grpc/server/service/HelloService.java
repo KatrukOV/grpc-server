@@ -13,10 +13,10 @@ public class HelloService {
 
     public Hello.HelloResponse say(Hello.HelloRequest request) {
         String name = request.getName();
-        final int millisecond = new Random(2, 40).intInRange();
+        final int millisecond = new Random(5, 55).intInRange();
         new TimeOut(millisecond).waiting();
         if (millisecond % 7 == 0) {
-            throw new RuntimeException("Something broke in " + name);
+            throw new RuntimeException("Something broke for " + name + " in " + millisecond);
         }
         return Hello.HelloResponse.newBuilder()
                 .setGreeting(String.format("Hello, %s !!! in %s", name, millisecond))

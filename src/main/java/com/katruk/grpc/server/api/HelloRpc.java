@@ -56,7 +56,7 @@ public class HelloRpc extends HelloApiGrpc.HelloApiImplBase {
                     .withDescription("Call CANCELLED")
                     .asRuntimeException()
             );
-            log.warn("Call cancelled by client!");
+            log.warn("Call cancelled by client! in {}", result);
         } else {
             response.onNext(result);
             response.onCompleted();

@@ -1,5 +1,8 @@
 package com.katruk.grpc.server.domain;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public final class TimeOut {
 
     private final long milliSecond;
@@ -12,7 +15,7 @@ public final class TimeOut {
         try {
             Thread.sleep(milliSecond);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            log.warn("waiting failed: {}", e.getMessage());
         }
     }
 
