@@ -5,27 +5,28 @@ package com.katruk.grpc.server.api.pb;
 
 public final class Hello {
     private static final com.google.protobuf.Descriptors.Descriptor
-            internal_static_hello_HelloRequest_descriptor;
+            internal_static_grpc_server_HelloRequest_descriptor;
     private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-            internal_static_hello_HelloRequest_fieldAccessorTable;
+            internal_static_grpc_server_HelloRequest_fieldAccessorTable;
     private static final com.google.protobuf.Descriptors.Descriptor
-            internal_static_hello_HelloResponse_descriptor;
+            internal_static_grpc_server_HelloResponse_descriptor;
     private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-            internal_static_hello_HelloResponse_fieldAccessorTable;
+            internal_static_grpc_server_HelloResponse_fieldAccessorTable;
     private static com.google.protobuf.Descriptors.FileDescriptor
             descriptor;
 
     static {
         java.lang.String[] descriptorData = {
-                "\n\013hello.proto\022\005hello\"\034\n\014HelloRequest\022\014\n\004" +
-                        "name\030\001 \001(\t\"!\n\rHelloResponse\022\020\n\010greeting\030" +
-                        "\001 \001(\t2s\n\010HelloApi\0223\n\006trySay\022\023.hello.Hell" +
-                        "oRequest\032\024.hello.HelloResponse\0222\n\005cfSay\022" +
-                        "\023.hello.HelloRequest\032\024.hello.HelloRespon" +
-                        "seB(\n\035com.katruk.grpc.server.api.pbB\005Hel" +
-                        "loP\000b\006proto3"
+                "\n\013hello.proto\022\013grpc.server\"\034\n\014HelloReque" +
+                        "st\022\014\n\004name\030\001 \001(\t\"!\n\rHelloResponse\022\020\n\010gre" +
+                        "eting\030\001 \001(\t2\213\001\n\010HelloApi\022?\n\006trySay\022\031.grp" +
+                        "c.server.HelloRequest\032\032.grpc.server.Hell" +
+                        "oResponse\022>\n\005cfSay\022\031.grpc.server.HelloRe" +
+                        "quest\032\032.grpc.server.HelloResponseB*\n\035com" +
+                        ".katruk.grpc.server.api.pbB\005HelloH\001P\000b\006p" +
+                        "roto3"
         };
         com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
                 new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -39,17 +40,17 @@ public final class Hello {
                 .internalBuildGeneratedFileFrom(descriptorData,
                         new com.google.protobuf.Descriptors.FileDescriptor[]{
                         }, assigner);
-        internal_static_hello_HelloRequest_descriptor =
+        internal_static_grpc_server_HelloRequest_descriptor =
                 getDescriptor().getMessageTypes().get(0);
-        internal_static_hello_HelloRequest_fieldAccessorTable = new
+        internal_static_grpc_server_HelloRequest_fieldAccessorTable = new
                 com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-                internal_static_hello_HelloRequest_descriptor,
+                internal_static_grpc_server_HelloRequest_descriptor,
                 new java.lang.String[]{"Name",});
-        internal_static_hello_HelloResponse_descriptor =
+        internal_static_grpc_server_HelloResponse_descriptor =
                 getDescriptor().getMessageTypes().get(1);
-        internal_static_hello_HelloResponse_fieldAccessorTable = new
+        internal_static_grpc_server_HelloResponse_fieldAccessorTable = new
                 com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-                internal_static_hello_HelloResponse_descriptor,
+                internal_static_grpc_server_HelloResponse_descriptor,
                 new java.lang.String[]{"Greeting",});
     }
 
@@ -71,7 +72,7 @@ public final class Hello {
         return descriptor;
     }
     public interface HelloRequestOrBuilder extends
-            // @@protoc_insertion_point(interface_extends:hello.HelloRequest)
+            // @@protoc_insertion_point(interface_extends:grpc.server.HelloRequest)
             com.google.protobuf.MessageOrBuilder {
 
         /**
@@ -87,7 +88,7 @@ public final class Hello {
     }
 
     public interface HelloResponseOrBuilder extends
-            // @@protoc_insertion_point(interface_extends:hello.HelloResponse)
+            // @@protoc_insertion_point(interface_extends:grpc.server.HelloResponse)
             com.google.protobuf.MessageOrBuilder {
 
         /**
@@ -103,15 +104,15 @@ public final class Hello {
     }
 
     /**
-     * Protobuf type {@code hello.HelloRequest}
+     * Protobuf type {@code grpc.server.HelloRequest}
      */
     public static final class HelloRequest extends
             com.google.protobuf.GeneratedMessageV3 implements
-            // @@protoc_insertion_point(message_implements:hello.HelloRequest)
+            // @@protoc_insertion_point(message_implements:grpc.server.HelloRequest)
             HelloRequestOrBuilder {
         public static final int NAME_FIELD_NUMBER = 1;
         private static final long serialVersionUID = 0L;
-        // @@protoc_insertion_point(class_scope:hello.HelloRequest)
+        // @@protoc_insertion_point(class_scope:grpc.server.HelloRequest)
         private static final com.katruk.grpc.server.api.pb.Hello.HelloRequest DEFAULT_INSTANCE;
         private static final com.google.protobuf.Parser<HelloRequest>
                 PARSER = new com.google.protobuf.AbstractParser<HelloRequest>() {
@@ -185,7 +186,7 @@ public final class Hello {
 
         public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-            return com.katruk.grpc.server.api.pb.Hello.internal_static_hello_HelloRequest_descriptor;
+            return com.katruk.grpc.server.api.pb.Hello.internal_static_grpc_server_HelloRequest_descriptor;
         }
 
         public static com.katruk.grpc.server.api.pb.Hello.HelloRequest parseFrom(
@@ -293,7 +294,7 @@ public final class Hello {
 
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-            return com.katruk.grpc.server.api.pb.Hello.internal_static_hello_HelloRequest_fieldAccessorTable
+            return com.katruk.grpc.server.api.pb.Hello.internal_static_grpc_server_HelloRequest_fieldAccessorTable
                     .ensureFieldAccessorsInitialized(
                             com.katruk.grpc.server.api.pb.Hello.HelloRequest.class, com.katruk.grpc.server.api.pb.Hello.HelloRequest.Builder.class);
         }
@@ -418,11 +419,11 @@ public final class Hello {
         }
 
         /**
-         * Protobuf type {@code hello.HelloRequest}
+         * Protobuf type {@code grpc.server.HelloRequest}
          */
         public static final class Builder extends
                 com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-                // @@protoc_insertion_point(builder_implements:hello.HelloRequest)
+                // @@protoc_insertion_point(builder_implements:grpc.server.HelloRequest)
                 com.katruk.grpc.server.api.pb.Hello.HelloRequestOrBuilder {
             private java.lang.Object name_ = "";
 
@@ -439,12 +440,12 @@ public final class Hello {
 
             public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-                return com.katruk.grpc.server.api.pb.Hello.internal_static_hello_HelloRequest_descriptor;
+                return com.katruk.grpc.server.api.pb.Hello.internal_static_grpc_server_HelloRequest_descriptor;
             }
 
             protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-                return com.katruk.grpc.server.api.pb.Hello.internal_static_hello_HelloRequest_fieldAccessorTable
+                return com.katruk.grpc.server.api.pb.Hello.internal_static_grpc_server_HelloRequest_fieldAccessorTable
                         .ensureFieldAccessorsInitialized(
                                 com.katruk.grpc.server.api.pb.Hello.HelloRequest.class, com.katruk.grpc.server.api.pb.Hello.HelloRequest.Builder.class);
             }
@@ -464,7 +465,7 @@ public final class Hello {
 
             public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-                return com.katruk.grpc.server.api.pb.Hello.internal_static_hello_HelloRequest_descriptor;
+                return com.katruk.grpc.server.api.pb.Hello.internal_static_grpc_server_HelloRequest_descriptor;
             }
 
             public com.katruk.grpc.server.api.pb.Hello.HelloRequest getDefaultInstanceForType() {
@@ -643,21 +644,21 @@ public final class Hello {
             }
 
 
-            // @@protoc_insertion_point(builder_scope:hello.HelloRequest)
+            // @@protoc_insertion_point(builder_scope:grpc.server.HelloRequest)
         }
 
     }
 
     /**
-     * Protobuf type {@code hello.HelloResponse}
+     * Protobuf type {@code grpc.server.HelloResponse}
      */
     public static final class HelloResponse extends
             com.google.protobuf.GeneratedMessageV3 implements
-            // @@protoc_insertion_point(message_implements:hello.HelloResponse)
+            // @@protoc_insertion_point(message_implements:grpc.server.HelloResponse)
             HelloResponseOrBuilder {
         public static final int GREETING_FIELD_NUMBER = 1;
         private static final long serialVersionUID = 0L;
-        // @@protoc_insertion_point(class_scope:hello.HelloResponse)
+        // @@protoc_insertion_point(class_scope:grpc.server.HelloResponse)
         private static final com.katruk.grpc.server.api.pb.Hello.HelloResponse DEFAULT_INSTANCE;
         private static final com.google.protobuf.Parser<HelloResponse>
                 PARSER = new com.google.protobuf.AbstractParser<HelloResponse>() {
@@ -731,7 +732,7 @@ public final class Hello {
 
         public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-            return com.katruk.grpc.server.api.pb.Hello.internal_static_hello_HelloResponse_descriptor;
+            return com.katruk.grpc.server.api.pb.Hello.internal_static_grpc_server_HelloResponse_descriptor;
         }
 
         public static com.katruk.grpc.server.api.pb.Hello.HelloResponse parseFrom(
@@ -839,7 +840,7 @@ public final class Hello {
 
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-            return com.katruk.grpc.server.api.pb.Hello.internal_static_hello_HelloResponse_fieldAccessorTable
+            return com.katruk.grpc.server.api.pb.Hello.internal_static_grpc_server_HelloResponse_fieldAccessorTable
                     .ensureFieldAccessorsInitialized(
                             com.katruk.grpc.server.api.pb.Hello.HelloResponse.class, com.katruk.grpc.server.api.pb.Hello.HelloResponse.Builder.class);
         }
@@ -964,11 +965,11 @@ public final class Hello {
         }
 
         /**
-         * Protobuf type {@code hello.HelloResponse}
+         * Protobuf type {@code grpc.server.HelloResponse}
          */
         public static final class Builder extends
                 com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-                // @@protoc_insertion_point(builder_implements:hello.HelloResponse)
+                // @@protoc_insertion_point(builder_implements:grpc.server.HelloResponse)
                 com.katruk.grpc.server.api.pb.Hello.HelloResponseOrBuilder {
             private java.lang.Object greeting_ = "";
 
@@ -985,12 +986,12 @@ public final class Hello {
 
             public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-                return com.katruk.grpc.server.api.pb.Hello.internal_static_hello_HelloResponse_descriptor;
+                return com.katruk.grpc.server.api.pb.Hello.internal_static_grpc_server_HelloResponse_descriptor;
             }
 
             protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-                return com.katruk.grpc.server.api.pb.Hello.internal_static_hello_HelloResponse_fieldAccessorTable
+                return com.katruk.grpc.server.api.pb.Hello.internal_static_grpc_server_HelloResponse_fieldAccessorTable
                         .ensureFieldAccessorsInitialized(
                                 com.katruk.grpc.server.api.pb.Hello.HelloResponse.class, com.katruk.grpc.server.api.pb.Hello.HelloResponse.Builder.class);
             }
@@ -1010,7 +1011,7 @@ public final class Hello {
 
             public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-                return com.katruk.grpc.server.api.pb.Hello.internal_static_hello_HelloResponse_descriptor;
+                return com.katruk.grpc.server.api.pb.Hello.internal_static_grpc_server_HelloResponse_descriptor;
             }
 
             public com.katruk.grpc.server.api.pb.Hello.HelloResponse getDefaultInstanceForType() {
@@ -1189,7 +1190,7 @@ public final class Hello {
             }
 
 
-            // @@protoc_insertion_point(builder_scope:hello.HelloResponse)
+            // @@protoc_insertion_point(builder_scope:grpc.server.HelloResponse)
         }
 
     }
