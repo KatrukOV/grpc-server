@@ -4,6 +4,7 @@ import com.katruk.grpc.server.api.pb.Hello;
 import com.katruk.grpc.server.api.pb.HelloApiGrpc;
 import com.katruk.grpc.server.service.HelloService;
 import io.grpc.Context;
+import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,7 +32,7 @@ public class HelloRpc extends HelloApiGrpc.HelloApiImplBase {
             Hello.HelloResponse result = this.helloService.say(request);
             success(response, start, result);
         } catch (Exception ex) {
-            response.onError(ex);
+            response.onError(Status.UNKNOWN.withDescription(ex.toString()).asRuntimeException());
             log.error("Error {}", ex.getMessage());
         }
     }
