@@ -8,9 +8,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
+import static java.time.LocalDateTime.now;
 import static java.util.Optional.ofNullable;
 import static java.util.concurrent.CompletableFuture.supplyAsync;
 
@@ -23,15 +26,13 @@ public class HelloRpc extends HelloApiGrpc.HelloApiImplBase implements Transacti
 
     @Override
     public void trySay(Hello.HelloRequest request, StreamObserver<Hello.HelloResponse> response) {
+        LocalDateTime start = LocalDateTime.now();
         Function<Hello.HelloRequest, Hello.HelloResponse> commit = e -> {
-            Hello.HelloResponse result = this.helloService.say(request);
-            log.info("Ok to {}", e.getName());
+            Hello.HelloResponse result = this.helloService.say(e);
+            log.info("Ok to {}. TimeOF: {}", e.getName(), Duration.between(start, now()));
             return result;
         };
-        Consumer<Hello.HelloRequest> rollback = e -> {
-            log.warn("Rollback for {}", e.getName());
-            this.helloService.revertSay(request);
-        };
+        Consumer<Hello.HelloRequest> rollback = this.helloService::revertSay;
         execute(request, response, commit, rollback);
     }
 
