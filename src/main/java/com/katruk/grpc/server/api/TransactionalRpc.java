@@ -9,7 +9,7 @@ import java.util.function.Function;
 
 import static io.grpc.Status.CANCELLED;
 
-public interface SafeRpc {
+public interface TransactionalRpc {
 
     default <T> boolean needRollback(StreamObserver<T> response, T result) {
         final boolean unSuccess;
@@ -34,7 +34,7 @@ public interface SafeRpc {
                 rollback.accept(request);
             }
         } catch (Exception ex) {
-            response.onError(Status.UNKNOWN.withDescription(ex.toString()).asRuntimeException());
+            response.onError(Status.UNKNOWN.withDescription(ex.getMessage()).asRuntimeException());
             rollback.accept(request);
         }
     }

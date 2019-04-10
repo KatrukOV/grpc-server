@@ -18,19 +18,15 @@ public class HelloService {
         final int millisecond = new Random(5, 55).intInRange();
         new TimeOut(millisecond).waiting();
         if (millisecond % 7 == 0) {
-            message = String.format("Something broke for %s in %d", name, millisecond);
-            log.error(message);
-            throw new RuntimeException(message);
+            throw new RuntimeException(String.format("Something broke for %s in %d", name, millisecond));
         }
-        message = String.format("Hello, %s !!! in %s", name, millisecond);
-        log.info(message);
         return Hello.HelloResponse.newBuilder()
-                .setGreeting(message)
+                .setGreeting(String.format("Hello, %s !!! in %s", name, millisecond))
                 .build();
     }
 
     public void revertSay(Hello.HelloRequest request) {
-        log.warn("Rollback Say to {}", request.getName());
+        log.warn("Clean up after rollback of Say to {}", request.getName());
     }
 
 }
