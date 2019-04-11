@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -20,14 +22,22 @@ import static java.util.concurrent.CompletableFuture.supplyAsync;
 public class HelloRpc extends HelloApiGrpc.HelloApiImplBase implements SafeRpc {
 
     private final HelloService helloService;
+    public static List<String> storeResult = new CopyOnWriteArrayList<>();
 
     @Override
     public void trySay(Hello.HelloRequest request, StreamObserver<Hello.HelloResponse> response) {
         Function<Hello.HelloRequest, Hello.HelloResponse> commit = e -> {
-            return this.helloService.say(request);
+            Hello.HelloResponse say = this.helloService.say(request);
+            if(storeResult.contains(request.getName())){
+                log.error("Duplicate: {}",request.getName());
+            }
+            log.info("++ {}",request.getName());
+            storeResult.add(request.getName());
+            return say;
         };
         Consumer<Hello.HelloRequest> rollback = e -> this.helloService.revertSay(request);
         execute(request, response, commit, rollback);
+        log.info("! size {}, all {}", storeResult.size(), storeResult);
     }
 
     @Override

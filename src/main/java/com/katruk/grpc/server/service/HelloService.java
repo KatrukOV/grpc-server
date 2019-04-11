@@ -7,13 +7,15 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import static com.katruk.grpc.server.api.HelloRpc.storeResult;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class HelloService {
 
     public Hello.HelloResponse say(Hello.HelloRequest request) {
-        String name = request.getName();
+        String name = request.getName() + " | " + System.currentTimeMillis();
         String message;
         final int millisecond = new Random(5, 55).intInRange();
         new TimeOut(millisecond).waiting();
@@ -22,7 +24,8 @@ public class HelloService {
             log.error(message);
             throw new RuntimeException(message);
         }
-        message = String.format("Hello, %s !!! in %s", name, millisecond);
+
+        message = String.format("Hello, %s !!! time: %s", name, millisecond);
         log.info(message);
         return Hello.HelloResponse.newBuilder()
                 .setGreeting(message)
@@ -30,7 +33,8 @@ public class HelloService {
     }
 
     public void revertSay(Hello.HelloRequest request) {
-        log.warn("Rollback Say to {}", request.getName());
+        storeResult.remove(request.getName());
+        log.warn("-- {}", request.getName());
     }
 
 }
